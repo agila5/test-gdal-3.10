@@ -99,7 +99,7 @@ RUN cd proj* \
 
 # GDAL:
 ENV GDAL_VERSION 3.10.0
-ENV GDAL_VERSION_NAME 3.10.0beta1
+ENV GDAL_VERSION_NAME 3.10.0rc3
 #https://download.osgeo.org/gdal/3.9.0/gdal-3.9.0beta1.tar.gz
 #https://download.osgeo.org/gdal/3.10.0/gdal-3.10.0beta1.tar.gz
 
@@ -112,3 +112,5 @@ RUN wget -q http://download.osgeo.org/gdal/${GDAL_VERSION}/gdal-${GDAL_VERSION_N
   && make \
   && make install \
   && ldconfig
+
+RUN Rscript -e 'install.packages(c("osmextract"), Ncpus = 2)'
